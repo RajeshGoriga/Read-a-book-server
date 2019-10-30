@@ -1,0 +1,22 @@
+/api/changepassword:
+  x-swagger-router-controller: controller
+  post:
+    operationId: changePassword
+    security:
+        - Context: []
+    tags: 
+      - USERS
+    summary: Change Password
+    description: Change Password 
+    parameters:
+      - in: body
+        name: body
+        description: Chnage Password
+        required: true
+        schema:
+          $ref: "#/definitions/changePassword"
+    responses:
+      200:
+        description: Success
+      500:
+        description: Error

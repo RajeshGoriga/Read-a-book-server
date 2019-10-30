@@ -1,0 +1,178 @@
+/api/users/registeruser:
+  x-swagger-router-controller: controller
+  post:    
+    operationId: registerPatient
+    tags: 
+      - USERS
+    summary: Register User
+    description: Registers a New User
+    parameters:
+      - in: body
+        name: body
+        description: Registers New User
+        required: true
+        schema:
+          $ref: "#/definitions/user"
+    responses:
+      200:
+        description: Success
+/api/users:
+  x-swagger-router-controller: controller
+  post:    
+    operationId: createUser
+    security:
+      - Context: []
+        Bearer: []
+    x-security-scopes:
+      - create
+    tags: 
+      - USERS
+    summary: Create User
+    description: Creates a New User
+    parameters:
+      - in: body
+        name: body
+        description: Creates New User
+        required: true
+        schema:
+          $ref: "#/definitions/user"
+    responses:
+      200:
+        description: Success
+      500:
+        description: Error
+
+  get:
+    operationId: getUsers
+    tags:
+      - USERS
+    summary: List of Users
+    description: Get List of Users
+    parameters:    
+      - in: query
+        name: offset
+        required: true
+        description: The number of items to skip
+        type: integer
+      - in: query
+        name: limit
+        required: true
+        description: The number of items to limit          
+        type: integer
+    responses:
+      200:
+        description: Success
+      500:
+        description: Error
+
+/api/users/{userid}:
+  x-swagger-router-controller: controller
+  get:
+    operationId: getUserByID
+    tags:
+      - USERS
+    summary: Get Selected User
+    description: Returns the Selected User Details
+    parameters:
+        - in: path
+          name: userid        
+          description: Selected User ID
+          required: true
+          type: string
+    responses:
+      200:
+        description: Success
+      500:
+        description: Error
+  put:
+    operationId: updateUser
+    tags:
+      - USERS
+    summary: Update User
+    description: Updates User
+    parameters:
+        - in: path
+          name: userid
+          description: ID of the user need to be updated
+          required: true
+          type: string
+        - in: body
+          name: body
+          description: Updated user object
+          required: false
+          schema:
+            $ref: "#/definitions/user"
+    responses:
+      200:
+        description: Success
+      500:
+        description: Error
+
+/api/userdetails:
+    x-swagger-router-controller: controller
+    get:    
+      operationId: getUserDetails
+      security:
+        - Context: []
+          AuthChecks: []
+      x-security-scopes:
+        - read
+      tags:
+        - USERS
+      summary: Get Selected User
+      description: Returns the Selected User Details
+      responses:
+        200:
+          description: Success
+        500:
+          description: Error
+
+/api/activateuser/{userid}:
+    x-swagger-router-controller: controller
+    put:    
+      operationId: activateUser
+      security:
+        - Context: []
+          Bearer: []
+      x-security-scopes:
+        - update
+      tags:
+        - USERS
+      summary: Activate selected user
+      description: Activate selected user
+      parameters:
+        - in: path
+          name: userid        
+          description: Selected User ID
+          required: true
+          type: string
+      responses:
+        200:
+          description: Success
+        500:
+          description: Error
+
+/api/inactivateuser/{userid}:
+    x-swagger-router-controller: controller
+    put:    
+      operationId: inActivateUser
+      security:
+        - Context: []
+          Bearer: []
+      x-security-scopes:
+        - update
+      tags:
+        - USERS
+      summary: InActivate selected user
+      description: InActivate selected user
+      parameters:
+        - in: path
+          name: userid        
+          description: Selected User ID
+          required: true
+          type: string
+      responses:
+        200:
+          description: Success
+        500:
+          description: Error

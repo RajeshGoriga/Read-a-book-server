@@ -1,0 +1,16 @@
+definitions:
+  userlogin:
+    properties:
+      userid:
+        type: "string"
+      username:
+        type: "string"
+      password:
+        type: "string"
+  changePassword:
+    properties:
+      currentPassword:
+        type: "string"
+      newPassword:
+        type: "string"
+      

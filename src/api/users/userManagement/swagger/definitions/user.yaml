@@ -1,0 +1,16 @@
+definitions:
+  user:
+    properties:
+      name: 
+        type: "string"
+      mobileNumber:
+        type: "string"
+      email:
+        type: "string"
+        format: email
+      password:
+        type: "string"
+        format: password
+      confirmPassword:
+        type: "string"
+        format: password

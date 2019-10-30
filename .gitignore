@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+package-lock.json
+/logs
+/src/api/uploadfile/assets
+.DS_Store
+js,yaml
+.vscode
+.nyc_output
+/coverage
+/src/public

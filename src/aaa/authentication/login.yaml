@@ -1,0 +1,23 @@
+/api/login:
+  x-swagger-router-controller: controller
+# callback
+  post:
+    operationId: loginWithPassword
+    tags:
+      - Authentication
+    summary: Signin
+    description: Login with username and password
+    parameters:
+      - in: body
+        name: body
+        description: Login with username and password
+        required: true
+        schema:
+          $ref: "#/definitions/logindef"
+    responses:
+      200:
+        description: Success
+      422:
+        description: Login Invalid
+      500:
+        description: Error

@@ -14,16 +14,16 @@ class MongoConfig {
     async connect(uri) {
         try {
             let conn = await mongoose.connect(uri, this.opts);
+            // Try to figure out work with these events
+            // // Events
+            // conn.on('disconnected', (err) => {
+            //     console.log(`MongoDB-> disconnected: ${uri}`);
+            //     connect();
+            // });
 
-            // Events
-            conn.on('disconnected', (err) => {
-                console.log(`MongoDB-> disconnected: ${uri}`);
-                connect();
-            });
-
-            conn.on('reconnected', (err) => {
-                console.log(`MongoDB-> reconnected: ${uri}`);
-            });
+            // conn.on('reconnected', (err) => {
+            //     console.log(`MongoDB-> reconnected: ${uri}`);
+            // });
 
             // Success
             console.log(`-------\nMongoDB-> connected on ${uri}\n-------`);

@@ -11,8 +11,8 @@ export function index(app) {
     let swaggerConfig = require('./config').default(app);
     let routerConfig = {
         controllers: [
-            // `${config.base}/api/gpp/allergies`,
-
+            `${config.base}/api/users/userLogin`,
+            `${config.base}/api/users/userManagement`
         ],
         useStubs: false // If you want use examples.
     };

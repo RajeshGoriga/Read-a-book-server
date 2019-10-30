@@ -18,7 +18,7 @@ describe('UserHandler', function () {
             var body = {
                 name: "Tester",
                 mobileNumber: "9985786859",
-                email: "srinag63@gmail.com",
+                email: "gorigarajesh@gmail.com",
                 userName: "Test1",
                 password: "test",
                 confirmPassword: "test",
@@ -35,7 +35,7 @@ describe('UserHandler', function () {
             var body = {
                 name: "Tester",
                 mobileNumber: "97111",
-                email: "srinag63@gmail.com",
+                email: "gorigarajesh@gmail.com",
                 userName: "Test1",
                 password: "test",
                 confirmPassword: "test",
@@ -51,7 +51,7 @@ describe('UserHandler', function () {
             var body = {
                 name: "",
                 mobileNumber: "",
-                email: "srinag63@gmail.com",
+                email: "gorigarajesh@gmail.com",
                 userName: "",
                 password: "",
                 confirmPassword: "test",
@@ -95,7 +95,7 @@ describe('UserHandler', function () {
             var body = {
                 name: "UpdatedTester",
                 mobileNumber: "971114",
-                email: "srinag63@gmail.com",
+                email: "gorigarajesh@gmail.com",
                 userName: "Test2",
                 password: "test2",
                 confirmPassword: "test2",
@@ -111,7 +111,7 @@ describe('UserHandler', function () {
             var body = {
                 name: "",
                 mobileNumber: "",
-                email: "srinag63@gmail.com",
+                email: "gorigarajesh@gmail.com",
                 userName: "Test2",
                 password: "test2",
                 confirmPassword: "test2",
@@ -163,7 +163,7 @@ describe('UserHandler', function () {
 
     describe('getUserByEmail', function () {
         it('getUserByEmail should return user details with valid email', (done) => {
-            userHandler.getUserByEmail("srinag63@gmail.com", (result) => {
+            userHandler.getUserByEmail("gorigarajesh@gmail.com", (result) => {
                 assert.equal(true, result.status);
                 done();
             })
@@ -178,7 +178,7 @@ describe('UserHandler', function () {
         it('getUserByEmail should return false response when dbcontroller is null', async (done) => {
             var dbController = global.dbController;
             global.dbController = null;
-            userHandler.getUserByEmail("srinag63@gmail.com", (result) => {
+            userHandler.getUserByEmail("gorigarajesh@gmail.com", (result) => {
                 assert.equal(false, result.status);
                 global.dbController = dbController;
                 done();
@@ -412,7 +412,7 @@ describe('Login Handler', () => {
     describe('sendResetPasswordLink', () => {
         it('sendResetPasswordLink should return true status with in valid email', (done) => {
             var body = {
-                email: "srinag63@gmail.com"
+                email: "gorigarajesh@gmail.com"
             }
             loginHandler.sendResetPasswordLink(body, (response) => {
                 resettoken = response.token
@@ -424,7 +424,7 @@ describe('Login Handler', () => {
 
         it('sendResetPasswordLink should return false status with in invalid email', (done) => {
             var body = {
-                email: "srinag@gmail.com"
+                email: "Rajesh Goriga@gmail.com"
             }
 
             loginHandler.sendResetPasswordLink(body, (result) => {
@@ -437,7 +437,7 @@ describe('Login Handler', () => {
             var dbController = global.dbController;
             global.dbController = null;
             var body = {
-                email: "srinag63@gmail.com"
+                email: "gorigarajesh@gmail.com"
             }
             loginHandler.sendResetPasswordLink(body, (result) => {
                 assert.equal(false, result.status);
@@ -451,7 +451,7 @@ describe('Login Handler', () => {
         it('resetPassword should return true status with in valid body', (done) => {
             var body = {
                 token: resettoken,
-                password:'srinag@63'
+                password:'Rajesh Goriga@63'
             }
             loginHandler.resetPassword(body, (response) => {
                 assert.equal(true, response.status);
@@ -462,7 +462,7 @@ describe('Login Handler', () => {
         it('resetPassword should return false status with in valid token', (done) => {
             var body = {
                 token: token,
-                password:'srinag@63'
+                password:'Rajesh Goriga@63'
             }
             loginHandler.resetPassword(body, (response) => {
                 assert.equal(false, response.status);
@@ -473,7 +473,7 @@ describe('Login Handler', () => {
         it('resetPassword should return false status with in empty token', (done) => {
             var body = {
                 token: '',
-                password:'srinag@63'
+                password:'Rajesh Goriga@63'
             }
             loginHandler.resetPassword(body, (response) => {
                 assert.equal(false, response.status);
@@ -487,7 +487,7 @@ describe('Login Handler', () => {
 
             var body = {
                 token: resettoken,
-                password:'srinag@63'
+                password:'Rajesh Goriga@63'
             }
 
             loginHandler.resetPassword(body, (result) => {

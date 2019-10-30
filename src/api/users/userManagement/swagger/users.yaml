@@ -1,7 +1,7 @@
 /api/users/registeruser:
   x-swagger-router-controller: controller
   post:    
-    operationId: registerPatient
+    operationId: registerUser
     tags: 
       - USERS
     summary: Register User

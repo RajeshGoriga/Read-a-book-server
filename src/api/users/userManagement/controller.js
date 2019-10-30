@@ -52,9 +52,6 @@ export const createUser = (req, res) => {
             loginHandler.createLogin(response.result, req.body, (result, statusCode) => {
                 if (result.status)
                     userHandler.sendVerificationEmail(response.result.data);
-
-
-
                 res.status(statusCode).send(result);
             });
         } else {

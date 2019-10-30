@@ -30,7 +30,7 @@ export default class SmsController {
      * sendSMS method will send sms
      * @param sms: Array of sms with array of to numbers [{message:"", to:['98260XXXXX']}]
      * @param countryCode: country code eg: 91 for india
-     * @author  Srinag
+     * @author  Rajesh Goriga
      * @version 2.0
      */
     sendSMS(sms, countryCode) {

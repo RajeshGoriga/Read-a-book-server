@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import otplib from 'otplib';
 
 const bcrypt = require('bcrypt');
 var TOTAL_PWD_ROUNDS = 10;
@@ -16,7 +15,7 @@ class Utils {
 	 * @version 1.0
 	 */
 	createJWTtoken(details, subject) {
-		// NOTE: Madhu 
+		// NOTE: Rajesh Goriga 
 		// Remove expiration time on the user auth token
 
 		if (subject == "forgotpassword") {
@@ -127,28 +126,6 @@ class Utils {
 				result: { message: "Invalid Username or Password" }
 			};
 		}
-	}
-
-	/**
-	 * The generateOTP method will generate 6 digit stateless otp by using a secret 
-	 * @param secret: secret to generate otp
-	 * @author  Rajesh Goriga
-	 * @version 1.0
-	 */
-	generateOTP(secret) {
-		otplib.authenticator.options = { step: process.env.OTP_SETP_TIME };
-		return otplib.authenticator.generate(secret);
-	}
-
-	/**
-	 * The verifyOTP method will verify given otp with given secret 
-	 * @param secret: secret to verify otp
-	 * @param otp: otp that need to be verified
-	 * @author  Rajesh Goriga
-	 * @version 1.0
-	 */
-	verifyOTP(secret, otp) {
-		return otplib.authenticator.check(parseInt(otp), secret);
 	}
 
 	/**

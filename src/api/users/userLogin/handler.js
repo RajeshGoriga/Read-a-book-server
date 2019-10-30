@@ -136,7 +136,7 @@ export default class LoginHandler {
     */
     validatePassword(password) {
         try {
-            var regularExpression = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/;
+            var regularExpression = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
             if (regularExpression.test(password)) {
                 return true;
             } else return false;

@@ -20,7 +20,7 @@ class EmailController {
 
     /**
    * createEmailTransport method will initalize the transport using nodemailer and given options 
-   * @author  Srinag
+   * @author  Rajesh Goriga
    * @version 6.0
    */
     createEmailTransport() {
@@ -30,7 +30,7 @@ class EmailController {
     /**
     * sendEmail method will create the transport, cook the required payload and send the email provided in touserId
     * @param payload : details to send email
-     * @author  Srinag
+     * @author  Rajesh Goriga
      * @version 2.0
     */
     sendEmail(payload, cb) {
@@ -72,7 +72,7 @@ class EmailController {
     /**
     * sendEmailWithAttachement method will create the transport, cook the required payload and send the email provided in touserId
     * @param payload : details to send email
-     * @author  Srinag
+     * @author  Rajesh Goriga
      * @version 2.0
     */
     sendEmailWithAttachement(payload, cb) {

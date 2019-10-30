@@ -1,7 +1,7 @@
 /**
  * The DBController Class holds all db related operations
- * @author  Srinag
- * @version 2.0
+ * @author  Rajesh Goriga
+ * @version 1.0
  */
 
 import mongoConfig from './index'
@@ -18,8 +18,8 @@ export default class DBController {
      * @param collectionName: mongoose collection name
      * @param payload: document to insert
      * @context: Quried user context 
-     * @author  Srinag
-     * @version 2.0
+     * @author  Rajesh Goriga
+     * @version 1.0
      */
     insert(collectionName, payload, cb) {
         try {
@@ -32,19 +32,25 @@ export default class DBController {
                     }
                     cb && cb({
                         status: false,
-                        result: { message: message }
+                        result: {
+                            message: message
+                        }
                     });
                 } else {
                     cb && cb({
                         status: true,
-                        result: { data: doc._doc._id.toString() }
+                        result: {
+                            data: doc._doc._id.toString()
+                        }
                     });
                 }
             });
         } catch (e) {
             cb && cb({
                 status: false,
-                result: { message: e.message }
+                result: {
+                    message: e.message
+                }
             });
         }
     }
@@ -54,15 +60,17 @@ export default class DBController {
      * @param collectionName: mongoose collection name
      * @param query: mongoose query
      * @param cb: callback to return db response 
-     * @author  Srinag
-     * @version 2.0
+     * @author  Rajesh Goriga
+     * @version 1.0
      */
     find(collectionName, query, params, cb) {
         try {
             if (!collectionName) {
                 cb && cb({
                     status: false,
-                    result: { message: 'CollectionName is required' }
+                    result: {
+                        message: 'CollectionName is required'
+                    }
                 });
                 return;
             }
@@ -70,19 +78,25 @@ export default class DBController {
                 if (err) {
                     cb && cb({
                         status: false,
-                        result: { message: err }
+                        result: {
+                            message: err
+                        }
                     });
                 } else {
                     cb && cb({
                         status: true,
-                        result: { data: docs }
+                        result: {
+                            data: docs
+                        }
                     });
                 }
             });
         } catch (e) {
             cb && cb({
                 status: false,
-                result: { message: e.message }
+                result: {
+                    message: e.message
+                }
             });
         }
     }
@@ -92,15 +106,17 @@ export default class DBController {
      * @param collectionName: mongoose collection name
      * @param query: mongoose query
      * @param cb: callback to return db response 
-     * @author  Srinag
-     * @version 2.0
+     * @author  Rajesh Goriga
+     * @version 1.0
      */
     search(collectionName, query, cb) {
         try {
             if (!collectionName) {
                 cb && cb({
                     status: false,
-                    result: { message: 'CollectionName is required' }
+                    result: {
+                        message: 'CollectionName is required'
+                    }
                 });
                 return;
             }
@@ -108,19 +124,25 @@ export default class DBController {
                 if (err) {
                     cb && cb({
                         status: false,
-                        result: { message: err }
+                        result: {
+                            message: err
+                        }
                     });
                 } else {
                     cb && cb({
                         status: true,
-                        result: { data: docs }
+                        result: {
+                            data: docs
+                        }
                     });
                 }
             });
         } catch (e) {
             cb && cb({
                 status: false,
-                result: { message: e.message }
+                result: {
+                    message: e.message
+                }
             });
         }
     }
@@ -130,21 +152,25 @@ export default class DBController {
      * @param collectionName: mongoose collection name
      * @param query: mongoose query
      * @param cb: callback to return db response
-     * @author  Srinag
-     * @version 2.0
+     * @author  Rajesh Goriga
+     * @version 1.0
      */
     findOne(collectionName, query, cb) {
         try {
-            this.connection.collection(collectionName).findOne(query, (err, doc) => {
+            this.connection.models[collectionName].findOne(query, (err, doc) => {
                 if (err || doc == null) {
                     cb && cb({
                         status: false,
-                        result: { message: err || "Document Not Found" }
+                        result: {
+                            message: err || "Document Not Found"
+                        }
                     });
                 } else {
                     cb && cb({
                         status: true,
-                        result: { data: doc }
+                        result: {
+                            data: doc
+                        }
                     });
                 }
             });
@@ -152,7 +178,9 @@ export default class DBController {
             console.log("e", e)
             cb && cb({
                 status: false,
-                result: { message: e.message }
+                result: {
+                    message: e.message
+                }
             });
         }
     }
@@ -163,8 +191,8 @@ export default class DBController {
      * @param query: mongoose query
      * @param payload: data to update
      * @param cb: callback to return db response
-     * @author  Srinag
-     * @version 2.0
+     * @author  Rajesh Goriga
+     * @version 1.0
      */
     update(collectionName, query, payload, cb) {
         var resp = {};
@@ -180,7 +208,9 @@ export default class DBController {
                 } else {
                     resp = {
                         status: true,
-                        result: { data: doc }
+                        result: {
+                            data: doc
+                        }
                     };
                 }
                 cb && cb(resp)
@@ -197,14 +227,14 @@ export default class DBController {
 
 
     /**
- * The increment method will update record based on the input query
- * @param collectionName: mongoose collection name
- * @param query: mongoose query
- * @param payload: data to increment value
- * @param cb: callback to return db response
- * @author  Rajesh Goriga
- * @version 2.0
- */
+     * The increment method will update record based on the input query
+     * @param collectionName: mongoose collection name
+     * @param query: mongoose query
+     * @param payload: data to increment value
+     * @param cb: callback to return db response
+     * @author  Rajesh Goriga
+     * @version 1.0
+     */
     increment(collectionName, query, payload, cb) {
         var resp = {};
         try {
@@ -219,7 +249,9 @@ export default class DBController {
                 } else {
                     resp = {
                         status: true,
-                        result: { data: doc }
+                        result: {
+                            data: doc
+                        }
                     };
                 }
                 cb && cb(resp)
@@ -236,14 +268,14 @@ export default class DBController {
 
 
     /**
-* The pushArray method will update record based on the input query
-* @param collectionName: mongoose collection name
-* @param query: mongoose query
-* @param payload: data to increment value
-* @param cb: callback to return db response
-* @author  Rajesh Goriga
-* @version 2.0
-*/
+     * The pushArray method will update record based on the input query
+     * @param collectionName: mongoose collection name
+     * @param query: mongoose query
+     * @param payload: data to increment value
+     * @param cb: callback to return db response
+     * @author  Rajesh Goriga
+     * @version 1.0
+     */
     arrayUpdate(collectionName, query, payload, cb) {
         var resp = {};
         try {
@@ -257,7 +289,9 @@ export default class DBController {
                 } else {
                     resp = {
                         status: true,
-                        result: { data: doc }
+                        result: {
+                            data: doc
+                        }
                     };
                 }
                 cb && cb(resp)
@@ -279,8 +313,8 @@ export default class DBController {
      * @param query: mongoose query
      * @param payload: data to update / insert
      * @param cb: callback to return db response
-     * @author  Srinag
-     * @version 2.0
+     * @author  Rajesh Goriga
+     * @version 1.0
      */
     upsert(collectionName, query, payload, cb) {
         try {
@@ -292,12 +326,16 @@ export default class DBController {
                 if (err || doc == null) {
                     cb && cb({
                         status: false,
-                        result: { message: err }
+                        result: {
+                            message: err
+                        }
                     });
                 } else {
                     cb && cb({
                         status: true,
-                        result: { data: doc._doc._id }
+                        result: {
+                            data: doc._doc._id
+                        }
                     });
                 }
             });
@@ -305,7 +343,9 @@ export default class DBController {
             console.log(e.message);
             cb && cb({
                 status: false,
-                result: { message: e.message }
+                result: {
+                    message: e.message
+                }
             });
         }
     }
@@ -315,21 +355,25 @@ export default class DBController {
      * @param collectionName: mongoose collection name
      * @param query: mongoose query
      * @param cb: callback to return db response
-     * @author  Srinag
-     * @version 2.0
+     * @author  Rajesh Goriga
+     * @version 1.0
      */
     aggregate(collectionName, query, cb) {
         try {
-            this.connection.collection(collectionName).aggregate(query, (err, doc) => {
+            this.connection.models[collectionName].aggregate(query, (err, doc) => {
                 if (err || doc == null) {
                     cb && cb({
                         status: false,
-                        result: { message: "No Records Found" }
+                        result: {
+                            message: "No Records Found"
+                        }
                     });
                 } else {
                     cb && cb({
                         status: true,
-                        result: { data: doc }
+                        result: {
+                            data: doc
+                        }
                     });
                 }
             });
@@ -337,7 +381,9 @@ export default class DBController {
             console.log(e);
             cb && cb({
                 status: false,
-                result: { message: e.message }
+                result: {
+                    message: e.message
+                }
             });
         }
     }
@@ -345,8 +391,8 @@ export default class DBController {
     /**
      * The convertIdToObjectID method will convert _id to object
      * @param id: doc id
-     * @author  Srinag
-     * @version 2.0
+     * @author  Rajesh Goriga
+     * @version 1.0
      */
     convertIdToObjectID(id) {
         if (!id) {
@@ -356,19 +402,21 @@ export default class DBController {
     }
 
     /**
-    * The count method will fetch count of records based on the input query
-    * @param collectionName: mongoose collection name
-    * @param query: mongoose query
-    * @param cb: callback to return db response 
-    * @author  Rajesh Goriga
-    * @version 2.0
-    */
+     * The count method will fetch count of records based on the input query
+     * @param collectionName: mongoose collection name
+     * @param query: mongoose query
+     * @param cb: callback to return db response 
+     * @author  Rajesh Goriga
+     * @version 1.0
+     */
     count(collectionName, query, cb) {
         try {
             if (!collectionName) {
                 cb && cb({
                     status: false,
-                    result: { message: 'CollectionName is required' }
+                    result: {
+                        message: 'CollectionName is required'
+                    }
                 });
                 return;
             }
@@ -376,19 +424,25 @@ export default class DBController {
                 if (err) {
                     cb && cb({
                         status: false,
-                        result: { message: err }
+                        result: {
+                            message: err
+                        }
                     });
                 } else {
                     cb && cb({
                         status: true,
-                        result: { data: docs }
+                        result: {
+                            data: docs
+                        }
                     });
                 }
             });
         } catch (e) {
             cb && cb({
                 status: false,
-                result: { message: e.message }
+                result: {
+                    message: e.message
+                }
             });
         }
     }

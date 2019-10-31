@@ -5,7 +5,6 @@ import statusCodes from '../../config/statuscodes'
 import utils from '../../commons/utils/index'
 import UserHandler from '../../api/users/userManagement/handler';
 import LoginHandler from '../../api/users/userLogin/handler';
-import redisController from '../../commons/redisController/controller';
 
 /**
  * The LogHandler class handles complete authentication
@@ -114,7 +113,7 @@ class AuthenticationHandler {
                     cb && cb({ status: false, result: { message: "User Is InActive Please Consult Admin" } });
                     return;
                 }
-                redisController.getFromRedis(username, () => {
+
                     global.dbController.findOne('userlogin', { username: username }, (response) => {
                         if (!response.status) {
                             cb && cb({ status: false, result: { message: "Invalid Username or Password" } });
@@ -133,7 +132,7 @@ class AuthenticationHandler {
                             cb && cb(result);
                         }
                     });
-                });
+
 
             });
         } catch (e) {

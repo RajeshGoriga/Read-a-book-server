@@ -12,7 +12,8 @@ export function index(app) {
     let routerConfig = {
         controllers: [
             `${config.base}/api/users/userLogin`,
-            `${config.base}/api/users/userManagement`
+            `${config.base}/api/users/userManagement`,
+            `${config.base}/aaa/authentication`,
         ],
         useStubs: false // If you want use examples.
     };

@@ -1,7 +1,6 @@
 
 import swaggerTools from 'swagger-tools';
 import express from 'express';
-import { error } from 'express-easy-helper';
 // import { mw } from '../../auth/services/mw';
 // import authorizationHanlder from '../../aaa/authorization/authorizationHandler';
 // import authChecker from '../../aaa/authorization/authChecker';

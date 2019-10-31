@@ -136,7 +136,7 @@ export default class LoginHandler {
     */
     validatePassword(password) {
         try {
-            var regularExpression = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+            var regularExpression = /^(?=.*\d)(?=.*[_!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
             if (regularExpression.test(password)) {
                 return true;
             } else return false;
@@ -184,7 +184,6 @@ export default class LoginHandler {
 
     checkPasswordHashDuplication(newPassword, password) {
         var history = password.history;
-        var isFound = false;
         let verify = utils.verifyPasswordHash(newPassword, password.hash);
         if (verify.status) {
             return true;

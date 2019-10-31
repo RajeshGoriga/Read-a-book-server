@@ -1,5 +1,4 @@
 import statuscodes from '../../config/statuscodes'
-import lodash from 'lodash';
 
 class AuthorizationHanlder {
     constructor() {

@@ -1,5 +1,5 @@
 // This will represent the User Controller (serves the Routes)
-import LoginHandler from '../handler';
+import LoginHandler from './handler';
 
 
 export const changePassword = (req, res) => {

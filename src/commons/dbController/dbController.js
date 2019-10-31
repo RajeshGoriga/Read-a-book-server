@@ -6,7 +6,6 @@
 
 import mongoConfig from './index'
 var ObjectID = require('mongodb').ObjectID;
-var errorHelper = require('mongoose-error-helper').errorHelper;
 
 export default class DBController {
     constructor() {

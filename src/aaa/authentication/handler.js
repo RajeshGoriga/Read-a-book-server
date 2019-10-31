@@ -41,7 +41,6 @@ class AuthenticationHandler {
             if (!response.status) {
                 res.status(statusCodes.UNAUTHORIZED_REQUEST).send(response);
             } else {
-                console.log('response.result:', response.result);
                 var token = utils.createJWTtoken(response.result, 'login');
                 var result = {
                     data: {
@@ -137,7 +136,7 @@ class AuthenticationHandler {
             });
         } catch (e) {
             var error = { status: false, result: { message: e.message } };
-            cb && cb(result);
+            cb && cb(error);
         }
     }
 
